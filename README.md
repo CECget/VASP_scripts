@@ -12,4 +12,4 @@ Usage:
    $ cd newfile  
    $ cp ../DOSCAR .   
    $ getdpzbc.py x1 x2 (here use x1, x2 to select the atoms' range you want to calculate,x1 represent the atom index you want to begin with, x2 represent that to end with)  
- Check output: the results will print on screen directly
+Check output: the results will print on screen directly
