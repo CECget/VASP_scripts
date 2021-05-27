@@ -12,11 +12,13 @@ cp ~/vaspjobs/yanyang/bin/{freeze,vfcals.py} .
 
 
 ##########改写INCAR用于频率计算
-##########鲁棒性较差写法
+
+######鲁棒性较差写法
 #sed -n '/IBRION/p' INCAR | sed -i 's/2/5/g' INCAR
 #sed -n '/POTIM/p' INCAR | sed -i 's/0.10/0.02/g' INCAR
 #sed -i "/POTIM/a\\NFREE = 2" INCAR
-##########改良写法
+
+######改良写法
 Index_IBRION=`grep -n IBRION INCAR | awk -F ":" '{print$ 1}'`
 sed -i "${Index_IBRION}c IBRION = 5 " INCAR
 Index_POTIM=`grep -n POTIM INCAR | awk -F ":" '{print$ 1}'`
@@ -33,8 +35,8 @@ fi
 
 
 
-##########冻结基底所有原子
-./freeze POSCAR > pos
+##########冻结所有基底原子
+./freeze POSCAR > pos ###冻结标准基于z轴坐标，在上方freeze脚本的目录中设置
 mv pos POSCAR
 
 rm fqcCal.sh freeze
