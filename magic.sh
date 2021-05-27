@@ -1,6 +1,7 @@
 #!/bin/bash
 
-####### QYY ######
+####### author: QYY @XJTU ######
+####### e-mail: cba19971011@qq.com ####
 ####### reference:https://www.jb51.net/article/48832.htm ####
 
 
@@ -31,7 +32,7 @@ do
   then
   echo $1
   cd $1"/" #此处处理文件
-  cifout.sh
+  cifout.sh #此处处理文件
   cd - >/dev/null
   fi
  fi
