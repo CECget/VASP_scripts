@@ -16,7 +16,7 @@ Usage:
 Check output: the results will print on screen directly
 # magic.sh
 Function: Manage all the subfolders of a selected pathway ("path/") in one time  
-Usage: $ magic.sh path/
-        DIY according to your personal needs, in the present script, it will run cifout.sh to output a .cif file in every subfolder.  
+Usage: $ magic.sh path  
+DIY according to your personal needs, in the present script, it will run cifout.sh to output a .cif file in every subfolder.  
 
 # Waiting for update ...
