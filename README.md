@@ -14,4 +14,9 @@ Usage:
    $ getdpzbc.py x1 x2 (here use x1, x2 to select the atoms' range you want to calculate,x1 represent the atom index you want to begin with, x2 represent that to end with)
    
 Check output: the results will print on screen directly
+# magic.sh
+Function: Manage all the subfolders of a selected pathway ("path/") in one time  
+Usage: $ magic.sh path/
+DIY according to your personal needs, in the present script, it will run cifout.sh to output a .cif file in every subfolder.  
+
 # Waiting for update ...
