@@ -1,0 +1,62 @@
+#!/bin/sh
+set -e
+CONTCAR="$1"
+if [ -z "$CONTCAR" ] ; then
+  CONTCAR="CONTCAR"
+fi
+
+if [ ! -r "$CONTCAR" ] ; then
+  echo 'CONTCAR does not exist or is not readable.'
+  exit 1
+fi
+
+DIRECT=$(grep -n Direct $CONTCAR | head -c 1)
+awk -v contcar=$CONTCAR -v direct=$DIRECT '
+function print_atom(type, stuff) {
+  print type, stuff
+}
+
+BEGIN{
+  for(i=0; i<=direct-3; i++) {
+    getline<contcar 
+    print $0
+  }
+  getline atnumpos<contcar
+  print atnumpos
+  gsub(" ", "")
+  numtypes=split(atnumpos,atnums)
+  totnumat=0
+  for(i=1; i<=numtypes; i++) {
+    freezeat+=atnums[i]
+  }
+  print "Selective Dynamics"
+  getline line < contcar;
+  print line;
+
+  freezeat += 0
+
+  if (freezeat > 10000)
+  {
+    print "Cannot handle more than 1000 freeze atoms";
+    print freezeat;
+    exit 1;
+  }
+
+  for(k=1;k<=freezeat;k++)
+  {
+    getline < contcar;
+    x=$1;
+    y=$2;
+    z=$3;
+
+    if (z < 1.00 )
+    {
+      print "  "x"  "y"  "z" F F F";
+    }
+    else
+    {
+      print "  "x"  "y"  "z" T T T";
+    }
+  }
+}
+'
